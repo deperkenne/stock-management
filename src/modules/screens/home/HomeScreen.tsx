@@ -1,5 +1,5 @@
 import LoginButton from '../../auth/presentation/components/Login';
-import NavigationBar,{ type NavLink ,type DropdownConfig} from '../../components/home/navigationBar/NavigationBar';
+import NavigationBar from '../../components/home/navigationBar/NavigationBar';
 import HeroSection, { type HeroBullet } from '../../components/home/sections/HeroSection/HeroSection';
 import TrustedBySection from '../../components/home/sections/trustedBySection/TrustedBySection';
 import FeaturesSection from '../../components/home/sections/featureSection/FeaturesSection';

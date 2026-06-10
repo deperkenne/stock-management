@@ -3,7 +3,7 @@
 export const NavigationData = [
   { label: 'Orders', href: '#orders' },
   { label: 'About',  href: '#about'  },
-  { label: 'Contact',href: '#contact'},
+  { label: 'Contact', href: '/contact' },
 ];
 
 export const DropdownsData = [

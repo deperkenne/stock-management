@@ -21,15 +21,12 @@ interface NavigationBarProps {
   mobileActions?: ReactNode;
 }
 
-
-
-// ─── Navigation bar data ──────────────────────────────────────────────────────
-
 const navigationLinks: NavLink[] = NavigationData
 
 const dropdowns: DropdownConfig[] = DropdownsData
 
 const logo = logoData
+
 
 function NavDropdown({ label, links }: DropdownConfig) {
   return (
