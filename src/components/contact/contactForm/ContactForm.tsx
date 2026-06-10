@@ -7,7 +7,11 @@ import ContactTextArea from '../ContactTextArea';
 import { contactSchema, type ContactFormData } from '../validation';
 import { CONTACT_FIELDS } from './Data';
 
+import { contactMessageSender } from '../../../modules/contact/di/contactContainer';
+import type { IContactMessageProps } from '../../../modules/contact/domain/entities/ContactMessage';
+
 type SubmitStatus = 'idle' | 'success' | 'error';
+
 
 export default function ContactForm() {
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('idle');
@@ -26,7 +30,7 @@ export default function ContactForm() {
   const onSubmit = async (_data: ContactFormData) => {
     try {
       // Replace with real API call
-      await new Promise<void>((resolve) => setTimeout(resolve, 1500));
+      await contactMessageSender.execute(_data as IContactMessageProps)
       setSubmitStatus('success');
       reset();
     } catch {
