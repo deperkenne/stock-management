@@ -1,4 +1,4 @@
-import type { ContactFormData } from '../validation';
+import type { ContactFormData } from './validation';
 
 type TextFieldKey = Exclude<keyof ContactFormData, 'message'>;
 

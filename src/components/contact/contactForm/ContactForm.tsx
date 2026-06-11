@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { cn } from '../../../utils/cn';
-import ContactInput from '../ContactInput';
-import ContactTextArea from '../ContactTextArea';
-import { contactSchema, type ContactFormData } from '../validation';
+import ContactInput from '../../../shared/components/ContactInput';
+import ContactTextArea from '../../../shared/components/ContactTextArea';
+import { contactSchema, type ContactFormData } from './validation';
 import { CONTACT_FIELDS } from './Data';
 
 import { contactMessageSender } from '../../../modules/contact/di/contactContainer';
