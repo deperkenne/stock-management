@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import NavigationBar from '../modules/components/home/navigationBar/NavigationBar';
+import NavigationBar from '../shared/components/navigationBar/NavigationBar';
 import LoginButton from '../modules/auth/presentation/components/Login';
 import ContactForm from '../components/contact/contactForm/ContactForm';
 import ContactInfo from '../components/contact/contactInfo/ContactInfo';
