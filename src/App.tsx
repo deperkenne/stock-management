@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import OidcCallback from "./modules/auth/presentation/components/OidcCallback";
-import HomeUi from "./modules/screens/home/HomeScreen";
+import HomeUi from "./screens/HomeScreen";
 import ContactScreen from "./screens/contactScreen";
 
 function App() {
