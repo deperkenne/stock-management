@@ -6,7 +6,7 @@ const CLIENT   = import.meta.env.VITE_KEYCLOAK_CLIENT_ID as string;
 const BASE       = `${BASE_URL}/realms/${REALM}/protocol/openid-connect`;
 const PROXY_BASE = `/keycloak/realms/${REALM}/protocol/openid-connect`;
 
-export class KeycloakAuthRepository implements OidcProviderRepository {
+export class OidcProviderRepositoryImpl implements OidcProviderRepository {
     getAuthorizationEndpoint(): string { return `${BASE}/auth`;         }
     getTokenEndpoint():         string { return `${PROXY_BASE}/token`;  }
     getUserInfoEndpoint():      string { return `${BASE}/userinfo`;     }

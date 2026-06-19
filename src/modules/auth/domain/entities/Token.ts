@@ -28,10 +28,15 @@ export class Token {
 
     isExpired(): boolean {
         if (!this.raw.access_token) return true;
-        const payload = Token.decode(this.raw.access_token);//mock
+        const payload = Token.decode(this.raw.access_token);
         if (!payload?.exp) return true;
-        return Date.now() / 1000 > payload.exp - 30;
-    }
+
+        const currentTimeInSeconds = Date.now() / 1000;
+        const expirationThreshold = (Number(payload.exp) + 300) - 30;
+
+
+        return currentTimeInSeconds > expirationThreshold;
+}
 
     static decode(token: string): ITokenPayload {
         const parts = token.split(".");

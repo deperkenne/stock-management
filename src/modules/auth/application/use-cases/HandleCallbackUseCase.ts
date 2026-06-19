@@ -32,7 +32,7 @@ export class HandleCallbackUseCase {
 
     
     async execute(): Promise<boolean> {
-        const params = this.navigator.getSearchParams(); //mock
+        const params = this.navigator.getSearchParams(); 
         const code   = params.get("code");
         const state  = params.get("state");
         const err    = params.get("error");
@@ -42,8 +42,8 @@ export class HandleCallbackUseCase {
         }
 
         if (code && state) {
-            const savedState   = this.getItemFromStorage("oidc_state"); //mock
-            const codeVerifier = this.getItemFromStorage("oidc_code_verifier");//mock
+            const savedState   = this.getItemFromStorage("oidc_state"); 
+            const codeVerifier = this.getItemFromStorage("oidc_code_verifier");
 
             if (state !== savedState) {
                 throw new Error("State mismatch — possible CSRF attack.");

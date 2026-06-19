@@ -1,10 +1,13 @@
+import { SessionStorageRepository } from "../../auth/infrastructure/repositories/SessionStorageRepository";
 import type { HttpClientRepository } from "../domain/repositories/HttpClientRepository";
 import { FetchHttpClientRepository } from "../infrastructure/repositories/fetchHttpClientRepo";
 type HttpFactory = () => HttpClientRepository;
 
+const storage = new SessionStorageRepository()
+
 // we make this to respect open close principe
 const registry = new Map<string, HttpFactory>([
-    ["fetch", () => new FetchHttpClientRepository()],
+    ["fetch", () => new FetchHttpClientRepository(storage)],
 ]);
 
 export class HttpClientFactory {

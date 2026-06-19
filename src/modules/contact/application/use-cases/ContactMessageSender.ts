@@ -15,7 +15,7 @@ export class ContactMessageSender {
 
     async execute(message: IContactMessageProps): Promise<void> {
         const response = await this.httpClient.post<ContactApiResponse>(
-            "/api/contact",
+            "http://localhost:8080/api/notification",
             message
         );
 

@@ -1,10 +1,10 @@
 import type { OidcProviderRepository } from "../domain/repositories/OidcProviderRepository";
-import { KeycloakAuthRepository } from "../infrastructure/repositories/KeycloakAuthRepository";
+import { OidcProviderRepositoryImpl } from "../infrastructure/repositories/OidcProviderRepositoryImpl";
 
 type ProviderFactory = () => OidcProviderRepository;
 
 const registry = new Map<string, ProviderFactory>([
-    ["keycloak", () => new KeycloakAuthRepository()],
+    ["keycloak", () => new OidcProviderRepositoryImpl()],
 ]);
 
 export class OidcProviderFactory {

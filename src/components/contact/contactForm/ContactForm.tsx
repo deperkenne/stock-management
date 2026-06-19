@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { cn } from '../../../utils/cn';
@@ -9,12 +10,14 @@ import { CONTACT_FIELDS } from './Data';
 
 import { contactMessageSender } from '../../../modules/contact/di/contactContainer';
 import type { IContactMessageProps } from '../../../modules/contact/domain/entities/ContactMessage';
+import { HttpError } from '../../../shared/errors/HttpError';
 
 type SubmitStatus = 'idle' | 'success' | 'error';
 
 
 export default function ContactForm() {
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('idle');
+  const navigate = useNavigate();
 
 
 // hooks
@@ -33,8 +36,12 @@ export default function ContactForm() {
       await contactMessageSender.execute(_data as IContactMessageProps)
       setSubmitStatus('success');
       reset();
-    } catch {
-      setSubmitStatus('error');
+    } catch (err) {
+      if (err instanceof HttpError) {
+        navigate(`/error/${err.status}/${encodeURIComponent(err.message)}`);
+      } else {
+        setSubmitStatus('error');
+      }
     }
   };
 

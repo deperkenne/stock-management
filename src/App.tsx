@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import OidcCallback from "./modules/auth/presentation/components/OidcCallback";
 import HomeUi from "./screens/HomeScreen";
 import ContactScreen from "./screens/contactScreen";
+import ErrorScreen from "./screens/ErrorScreen";
+import DashboardUi from "./screens/DashboardScreen";
 
 function App() {
     const [authenticated, setAuthenticated] = useState(false);
@@ -16,9 +18,12 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/"        element={<HomeUi />} />
-                <Route path="/contact" element={<ContactScreen />} />
+                <Route path="/contact"        element={<ContactScreen />} />
+                <Route path="/dashboard"        element={<DashboardUi />} />
+                <Route path="/error/:status/:message" element={<ErrorScreen />} />
+                <Route path="*"                      element={<ErrorScreen />} />
                 <Route
-                    path="/callback"
+                    path="/callback" // une fois le user entre ses credentiel  keykloack le renvoie vers ce chemin
                     element={
                         authenticated ? (
                             <Navigate to="/" replace />
